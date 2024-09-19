@@ -4,21 +4,19 @@ Este proyecto es un servicio API desarrollado con  tecnologias Serverless, Expre
 
 ## Requisitos Previos
 
-La base de datos ya está creada para el despliegue. Para probar el proyecto en local, debes tener acceso a la base de datos existente o crear tu propia base de datos. Para ello, ejecuta el script SQL db.sql que se encuentra en la raíz del proyecto en tu base de datos.
+La base de datos está creada para el despliegue de aws. Si deseas probar el proyecto en local, debes tener acceso a la base de datos existente o crear tu propia base de datos. Para ello, ejecuta el script SQL db.sql que se encuentra en la raíz del proyecto en tu base de datos.
 
 Asegúrate de añadir un archivo .env con las variables de entorno basadas en el archivo de ejemplo .env-example.
 
 ### Variables de entorno
 
-- `DB_MYSQL`: URL de conexión a la base de datos MySQL (el "pass" se debe reemplazar por el passpord correcto)
+- `DB_MYSQL`: URL de conexión a la base de datos MySQL
 
- - DB_MYSQL=mysql://admin:pass@database-1.cb6eyk06mrqr.us-east-1.rds.amazonaws.com:3306/backend-indra
+ - DB_MYSQL=mysql://root:@localhost:3306/backend-indra
 
 - `SW_URL_API`: URL de la API de Star Wars
 
  - SW_URL_API=https://swapi.py4e.com/api
-
-Asegúrate de tener instalados los siguientes elementos antes de ejecutar la aplicación:
 
 ### Elementos necesarios
 Asegúrate de tener instalados los siguientes elementos antes de ejecutar la aplicación:
@@ -70,7 +68,7 @@ Asegúrate de tener instalados los siguientes elementos antes de ejecutar la apl
 
 Base url
 - local: http://localhost:4000/dev
-- production: 
+- production: https://jv5hgpshn9.execute-api.us-east-1.amazonaws.com/dev
 
 ### `GET /dev/api/swapi`
 
