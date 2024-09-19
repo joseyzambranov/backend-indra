@@ -53,6 +53,14 @@ describe('UserController', () => {
         data: [user1, user2],
       });
     });
+    test('should handle service error and call next with error', async () => {
+      const error = new Error('Service error');
+      (mockUserService.getAll as jest.Mock).mockRejectedValue(error);
+    
+      await userController.getAll(req, res, next);
+    
+      expect(next).toHaveBeenCalledWith(error);
+    });
   });
 
   describe('create', () => {
@@ -73,6 +81,21 @@ describe('UserController', () => {
         error: null,
         data: 'Successfully created user',
       });
+    });
+
+    test('should handle error when service fails', async () => {
+      const userData = {
+        name: faker.person.fullName(),
+      };
+  
+      const mockError = new Error('Service error');
+      (mockUserService.create as jest.Mock).mockRejectedValue(mockError);
+  
+      req.body = userData;
+  
+      await userController.create(req, res, next);
+  
+      expect(next).toHaveBeenCalledWith(mockError);
     });
   });
 
